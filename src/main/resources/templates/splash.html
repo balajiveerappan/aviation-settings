@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Aviation Graph Screen</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<link rel="stylesheet" href="css/index.css"/>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/settings.js"></script>
+<script	src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script> 
+<script	type="text/javascript"	src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css"	href="http://cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css"/>
+
+
+<script type="text/javascript"
+	src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<style>
+.vis-item.vis-background.negative {
+	background-color: white !important;
+	width: 0px;
+	height: 0px;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	margin-top: 6px;
+	border-top: 20px solid #23CF46;
+}
+
+.vis-item.vis-background.positive {
+	background-color: white !important;
+	width: 0px;
+	height: 0px;
+	margin-top: 1px;
+	border-top: 11px solid pink;
+	width: 13px !important;
+}
+
+.vis-item.vis-range {
+	background-color: blue;
+}
+
+.navbar {
+	margin-bottom: 0;
+	background-color: #01579B;
+	border: 0;
+	font-size: 11px !important;
+	letter-spacing: 4px;
+	font-weight: 600;
+	position: static;
+}
+
+.btndiv {
+	display: inline;
+	float: left;
+	padding-left: 0.5%;
+	padding-top: 0.5%;
+}
+</style>
+<style>
+body, html {
+	font-family: arial, sans-serif;
+	font-size: 11pt;
+}
+
+.vis-item.vis-background.negative {
+	background-color: rgba(255, 0, 0, 0.2);
+}
+
+.vis-item.vis-background.positive {
+	background-color: rgba(105, 255, 98, 0.20);
+}
+
+.vis-item.vis-background.marker {
+	border-left: 2px solid green;
+}
+
+.button {
+	border: none;
+	color: white;
+	padding: 12px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+}
+
+.triangle {
+	width: 0px;
+	height: 0px;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #23CF46;
+}
+
+.ycircle {
+	background-color: Yellow;
+	border-radius: 50px;
+	padding: 12px 12px;
+}
+
+.bcircle {
+	background-color: Brown;
+	border-radius: 50px;
+	padding: 12px 12px;
+}
+
+.vis-item.vis-background.grph_ycircle {
+	background-color: Yellow;
+	border-radius: 50px;
+	padding: 12px 12px;
+	height: 0px !important;
+	margin-top: 6px;
+}
+
+.vis-item.vis-background.grph_bcircle {
+	background-color: Brown;
+	border-radius: 50px;
+	padding: 12px 12px;
+	height: 0px !important;
+	margin-top: 6px;
+}
+</style>
+
+</head>
+<body onload="dateRange();" >
+
+	<!-- Top Logo Header -->
+	<nav id="home" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Aviation</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Menu
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="afterLogin.html">Home</a></li>
+							<li><a href="Unit_Filter.html">Filter Editor</a></li>
+						</ul></li>
+					 <li><a href="index.html" id="logout">LOGOUT</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End of Top Logo Header -->
+
+
+	<form action="">
+		<div class="main_content">
+
+			<center>
+
+				<!-- div for button alignment -->
+				<div class="btndiv">
+					<!-- <button class="filebtn list-cust-btn">File</button> -->
+					<!-- <button class="statbtn list-cust-btn">Statistics</button> -->
+					<input type="button" value="File" class="filebtn list-clear-btn"/>
+					<input type="button" value="Statistics"
+						class="statbtn list-clear-btn"/>
+				</div>
+
+				<label class="right_label">Aircraft Component Analysis</label>
+			</center>
+</div>
+			<div class="graph_body main_right">
+				<!--//////////////////////////// Chart Section ///////////////////////////////////////// -->
+				<table style="background-color: white;" class="columns">
+					<tr>
+						<td align="center" colspan="2"><img width="80%" align="middle" style="height: 400px" alt="Predictive Analysis" src="img/predictive widget.JPG"/></td>
+<!-- 						<td><img width="80%" alt="Predictive Analysis" src="img/predictive analysis.PNG"></td> -->
+					</tr>
+					<tr>
+						<td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+						<td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+					</tr>
+					<tr>
+						<td><div id="piechart_divp" style="border: 1px solid #ccc"></div></td>
+						<td><div id="barchart_div2" style="border: 1px solid #ccc"></div></td>
+					</tr>
+				</table>
+
+
+				<!--//////////////////////////// Chart Section ///////////////////////////////////////// -->
+
+			</div>
+			<div class="main_left">
+
+				<div class="left_p1">
+
+
+					<div class="form-group date-range ">
+						<!-- <center><label for="dateRange" class="label_date" style="color: brown;">Extract Date</label></center> -->
+						<div class="date_range_select ">
+						
+						
+							<label for="fromDate" class="label_date">Extract Date</label> 
+							<input type="text" style="width: 178px; margin-bottom: 4px;" class="form-control"  id="fromDate" readonly="readonly" /><br/>
+							 <label	for="fromDate" class="label_date">Date Range</label> 
+							 <input	type="text" name="datefilter" style="width: 188px; margin-bottom: 4px;" class="form-control"  id="dateRange" readonly="readonly" />
+								
+								
+	
+						</div>
+
+					</div>
+					<div>
+						<hr id="date_line"/>
+						<!-- <input type="string" style="width: 70px;" id="unit" value="Units by"> -->
+
+						<div>
+							<button type="button"
+								style="height: 54px; width: 140px; margin-left: 28px; margin-top: 25px; margin-bottom: 13px;"
+								onclick="window.open('Unit_Filter.html','_self')">Select
+								Component for Analysis</button>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+	</form>
+
+
+	<script type="text/javascript">
+	
+	google.charts.load('current', {
+		'packages' : [ 'corechart' ]
+	});
+	google.charts.setOnLoadCallback(drawVisualization);
+	google.charts.setOnLoadCallback(drawVisualizations);
+	google.charts.setOnLoadCallback(drawVisualization2);
+	google.charts.setOnLoadCallback(drawStacked);
+		/*-----------------------------Chart1-----------------------------------------*/
+	</script>
+</body>
+</html>
