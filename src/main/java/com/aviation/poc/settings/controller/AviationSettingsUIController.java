@@ -15,4 +15,10 @@ public class AviationSettingsUIController {
 	public String unitFilter(){
 		return "filter";
 	}
+	
+	
+	@RequestMapping("/splash")
+	public String splash(){
+		return "splash";
+	}
 }
