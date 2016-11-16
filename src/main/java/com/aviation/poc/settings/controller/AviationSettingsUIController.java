@@ -11,4 +11,8 @@ public class AviationSettingsUIController {
 		return "splash";
 	}
 	
+	@RequestMapping("/filter")
+	public String unitFilter(){
+		return "filter";
+	}
 }

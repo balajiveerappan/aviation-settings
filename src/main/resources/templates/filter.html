@@ -1,147 +1,148 @@
 <!DOCTYPE html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Filter Editor Screen</title>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/unitFilter.css">
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/unitFilter.css" />
+<link rel="stylesheet" href="css/index.css" />
 
-<script src="Utility.js"></script>
-<script src="js/unit.js"></script>
-<script src="js/menu.js"></script>
+<script src="/js/Utility.js"></script>
+<script src="/js/unit.js"></script>
+<script src="/js/menu.js"></script>
 
-<!-- <script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
-<style> 
+<style>
 .navbar-default {
-    background-color: #6e1414;
-  
+	background-color: #6e1414;
 }
 
-	.navbar {
-    margin-bottom: 0;
-    background-color: #01579B;
-    border: 0;
-    font-size: 11px !important;
-    letter-spacing: 4px;
-    font-weight: 600;
-    position: static;
+.navbar {
+	margin-bottom: 0;
+	background-color: #01579B;
+	border: 0;
+	font-size: 11px !important;
+	letter-spacing: 4px;
+	font-weight: 600;
+	position: static;
 }
+
 .navbar li a, .navbar .navbar-brand {
-    color: #fff !important;
+	color: #fff !important;
 }
 
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {
+	height: 600px
+}
 
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content {height: 600px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 100%;
-	 margin: 10px;
-    border-radius: 13PX;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;}
-    }
-	#clearAll{
-	 padding-left: 32px;
-    padding-right: 32px;
+/* Set gray background color and 100% height */
+.sidenav {
+	background-color: #f1f1f1;
+	height: 100%;
+	margin: 10px;
+	border-radius: 13PX;
+}
 
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
 	}
-	#saveFilter{
-	 padding-left: 25px;
-    padding-right: 25px;
+	.row.content {
+		height: auto;
 	}
+}
 
-	
-	
-    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-    .row.content_main {height: 1110px;}
-    
-    /* Set gray background color and 100% height */
-    .sidenav_main {
-      background-color: #f1f1f1;
-      height: 100%;
-	 margin: 10px;
-    border-radius: 13PX;
-    margin-left: 3%;
-    }
-    
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav_main {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;}
-    }
-	.msgModal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+#clearAll {
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+#saveFilter {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content_main {
+	height: 1110px;
+}
+
+/* Set gray background color and 100% height */
+.sidenav_main {
+	background-color: #f1f1f1;
+	height: 100%;
+	margin: 10px;
+	border-radius: 13PX;
+	margin-left: 3%;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav_main {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
+.msgModal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .msgModal-content1 {
-    margin: auto;
-    padding: 20px;
-    border: 2px solid #1c1919;
-    width: 30%;
-    font-size: 22px;
-    background-color: #e7ecec;
+	margin: auto;
+	padding: 20px;
+	border: 2px solid #1c1919;
+	width: 30%;
+	font-size: 22px;
+	background-color: #e7ecec;
 }
 /* The Close Button */
 .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
-#msg{
-color:green;
+#msg {
+	color: green;
 }
 
-#error{
-color:red;
+#error {
+	color: red;
 }
 
 /* button#displayReport {
@@ -149,62 +150,65 @@ color:red;
     height: 80px;
     font-size: 22px;
 } */
-
 .finalButton {
-    margin-left:42%;
-  /*  margin-top:10%; */
-  /*  margin-bottom: 5%; */
+	margin-left: 42%;
+	/*  margin-top:10%; */
+	/*  margin-bottom: 5%; */
 }
+
 input[type=radio] {
-     width: 15px;
-    height: 14px;
-    margin-right: 4px;
-} 
+	width: 15px;
+	height: 14px;
+	margin-right: 4px;
+}
 
 .col-sm-1.midButton {
-    margin-top: 38px;
-    margin-right: 19px;
+	margin-top: 38px;
+	margin-right: 19px;
 }
+
 button#displayReport {
-    width: 32%;
-    height: 5%;
-    font-size: 20px;
-    font-family: "Arial", Helvetica, sans-serif;
+	width: 32%;
+	height: 5%;
+	font-size: 20px;
+	font-family: "Arial", Helvetica, sans-serif;
 }
 </style>
 
 </head>
 <body onload="loadRecentFilter()">
-<!-- Top Logo Header -->
-       <nav id="home"  class="navbar navbar-default navbar-fixed-top">
-       <div class="container-fluid">
-              <div class="navbar-header">
-                     <button type="button" class="navbar-toggle" data-toggle="collapse"
-                           data-target="#myNavbar">
-                           <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                                  class="icon-bar"></span>
-                     </button>
-                     <a class="navbar-brand" href="index.html">Aviation</a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-                     <ul class="nav navbar-nav navbar-right">
-                        
-<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span>                                                               </a>
-<ul class="dropdown-menu">
-<li><a href="afterLogin.html">Home</a></li>
+	<!-- Top Logo Header -->
+	<nav id="home" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Aviation</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
 
-<li><a href="Splash_Screen.html">Component Analysis</a></li>
-</ul></li>
-                           
-                          
-                            <li><a href="index.html" id="logout">LOGOUT</a></li>
-                     </ul>
-              </div>
-       </div>
-       </nav>
-       <!-- End of Top Logo Header -->
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Menu <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="afterLogin.html">Home</a></li>
 
-		
+							<li><a href="Splash_Screen.html">Component Analysis</a></li>
+						</ul></li>
+
+
+					<li><a href="index.html" id="logout">LOGOUT</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End of Top Logo Header -->
+
+
 
 
 	<!--Left content -->
@@ -213,356 +217,468 @@ button#displayReport {
 
 
 
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <h5><label for="filterName">Filter Name:</label><h5>
-	  
-  <input type="text" class="form-control" id="filterName" placeholder="Enter filter name">
-      <hr id="seperator_line">
-	  
-	        <h5><label for="fromDate">From::</label>
-	  
-  <input type="date" class="form-control" id="fromDate" ></h5>
-  	        
-			<h5><label for="toDate">To:</label>
-	  
-  <input type="date" class="form-control" id="toDate" onchange="functionFromDate();"></h5>
-      <hr id="seperator_line">
-	  
-	  <h5><label for="filterBy">Filter By:</label></h5>
-	  <input type="hidden" name="filterID" id="filterID"/>  
-  <h5><input type="checkbox"  name="installedUnit" id="installedUnit" onchange="filterStatus()"> Installed Unit</h5>
-  <h5><input type="checkbox"  name="newUnit" id="newUnit" onchange="filterStatus()"> New Unit</h5>
-  <h5><input type="checkbox"  type="checkbox" name="removedUnit" id="removedUnit" onchange="filterStatus()" > Removed Unit</h5>
-      <hr id="seperator_line">
-	  
-	  
-	  
-  <h5><center><input type="button" class="btn btn-primary" value="Save Filter" id="saveFilter" onclick="saveFilter();"><center></h5>
-  <h5><center><input type="button" class="btn btn-primary" value="Show Filter List" data-toggle="modal" data-target="#LoadFilter" onclick="loadFilterList()"><center></h5>
-  <h5><center><input type="button" class="btn btn-primary" value="Clear All" onclick="clearAll()" id="clearAll"><center></h5>
-   
-      <hr id="seperator_line">
-	  	  
+	<div class="container-fluid">
+		<div class="row content">
+			<div class="col-sm-2 sidenav">
+				<h5>
+					<label for="filterName">Filter Name:</label>
+				</h5>
 
-    </div>	
+				<input type="text" class="form-control" id="filterName"
+					placeholder="Enter filter name" />
+				<hr id="seperator_line" />
 
-  <div class="row content_main">
-  <div class="right_header">
-		<center><label class="right_label">Unit Based Filter Editor</label></center>
-		</div>
-    <div class="col-sm-9 sidenav_main">
-    <div>
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="row">
-				<div class="col-sm-1">
+				<h5>
+					<label for="fromDate">From::</label> <input type="date"
+						class="form-control" id="fromDate" />
+				</h5>
+
+				<h5>
+					<label for="toDate">To:</label> <input type="date"
+						class="form-control" id="toDate" onchange="functionFromDate();" />
+				</h5>
+				<hr id="seperator_line" />
+
+				<h5>
+					<label for="filterBy">Filter By:</label>
+				</h5>
+				<input type="hidden" name="filterID" id="filterID" />
+				<h5>
+					<input type="checkbox" name="installedUnit" id="installedUnit"
+						onchange="filterStatus()" /> Installed Unit
+				</h5>
+				<h5>
+					<input type="checkbox" name="newUnit" id="newUnit"
+						onchange="filterStatus()" /> New Unit
+				</h5>
+				<h5>
+					<input type="checkbox" name="removedUnit" id="removedUnit"
+						onchange="filterStatus()" /> Removed Unit
+				</h5>
+				<hr id="seperator_line" />
+
+
+
+				<h5>
+					<center>
+						<input type="button" class="btn btn-primary" value="Save Filter"
+							id="saveFilter" onclick="saveFilter();" />
+					</center>
+				</h5>
+				<h5>
+					<center>
+						<input type="button" class="btn btn-primary"
+							value="Show Filter List" data-toggle="modal"
+							data-target="#LoadFilter" onclick="loadFilterList()" />
+					</center>
+				</h5>
+				<h5>
+					<center>
+						<input type="button" class="btn btn-primary" value="Clear All"
+							onclick="clearAll()" id="clearAll" />
+					</center>
+				</h5>
+
+				<hr id="seperator_line" />
+
+
+			</div>
+
+			<div class="row content_main">
+				<div class="right_header">
+					<center>
+						<label class="right_label">Unit Based Filter Editor</label>
+					</center>
 				</div>
-					<div class="col-sm-10">
-						 <center><h5><label for="fleetNo">Fleet Number</label><h5></center>
+				<div class="col-sm-9 sidenav_main">
+					<div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-10">
+										<center>
+											<h5>
+												<label for="fleetNo">Fleet Number</label>
+											</h5>
+										</center>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="fleet" type="text"
+											class="search" onchange="searchData('fleetNo')"
+											readonly="readonly" />
+										<form>
+											<select name="fleet" class="sort_option sort_fleet"
+												style="height: 150px;" id="fleetNo" multiple="multiple">
+											</select>
+										</form>
+									</div>
+									<div class="col-sm-1 midButton">
+										<input type="button" value="&gt;&gt;" class="list-clear-btn"
+											id="fleetPush"
+											onclick="PushToSelectedList('fleetNo','fleetValue');"
+											disabled="disabled" /><br />
+										<br /> <input type="button" value="&lt;&lt;"
+											class="list-clear-btn" id="fleetClear"
+											onclick="ClearSelectedList('fleetValue','fleetNo');"
+											disabled="disabled" />
+
+									</div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="fleet1" type="text"
+											class="search" readonly="readonly" />
+										<form>
+											<select name="fleet" class="sort_option sort_fleet"
+												style="height: 150px;" id="fleetValue" multiple="multiple">
+											</select><br />
+											<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+												value="Submit" class="list-clear-btn" id="fleetNoSubmit"
+												onclick="getFleets()" disabled="disabled" />
+										</form>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-sm-6">
+
+
+
+
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-10">
+										<center>
+											<h5>
+												<label for="subFleet">Sub-Fleet Number</label>
+											</h5>
+										</center>
+									</div>
+
+								</div>
+
+
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="subFleet" type="text"
+											class="search" onchange="searchData('subfleetNo')" />
+										<form action="#">
+											<select name="subFleet" class="sort_option sort_subFleet"
+												style="height: 150px;" id="subfleetNo" multiple="multiple">
+											</select>
+										</form>
+									</div>
+									<div class="col-sm-1 midButton">
+										<input type="button" value="&gt;&gt;" class="list-clear-btn"
+											id="subfleetPush"
+											onclick="PushToSelectedList('subfleetNo','subfleetValue');" /><br />
+										<br /> <input type="button" value="&lt;&lt;"
+											class="list-clear-btn" id="subfleetClear"
+											onclick="ClearSelectedList('subfleetValue','subfleetNo');" />
+									</div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="subFleet1" type="text"
+											class="search sort_option" />
+										<form action="#">
+											<select name="subFleet" class="sort_option sort_subFleet1"
+												style="height: 150px;" id="subfleetValue"
+												multiple="multiple">
+
+											</select><br />
+											<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button"
+												value="Submit" class="list-clear-btn" id="subfleetSubmit"
+												onclick="getSubFleets()" />
+										</form>
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+
+						</div>
+						<br/>
+						<br/>
+
+						<div class="row">
+							<div class="col-sm-6">
+
+
+
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-10">
+										<center>
+											<h5>
+												<label for="tailNumber">Tail Number</label>
+											</h5>
+										</center>
+									</div>
+
+								</div>
+
+
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="tail" type="text"
+											class="search" onchange="searchData('tailNo')" />
+										<form action="#">
+											<select name="cars" class="sort_option sort_tail"
+												style="height: 150px;" id="tailNo" multiple="multiple">
+											</select>
+										</form>
+									</div>
+
+									<div class="col-sm-1 midButton">
+
+										<input type="button" name="tailnoSelect" value="&gt;&gt;"
+											class="list-clear-btn" id="tailPush"
+											onclick="PushToSelectedList('tailNo','tailValue');" /><br />
+										<br /> <input type="button" name="tailnoClear"
+											value="&lt;&lt;" class="list-clear-btn" id="tailClear"
+											onclick="ClearSelectedList('tailValue','tailNo');" />
+
+									</div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="tail1" type="text"
+											class="search" />
+										<form>
+											<select name="cars" class="sort_option sort_tail1"
+												style="height: 150px;" id="tailValue" multiple="multiple">
+											</select> <br />
+											<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+												value="Submit" class="list-clear-btn" id="tailSubmit"
+												onclick="getTailNo()" />
+										</form>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="col-sm-6">
+
+
+
+
+
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-10">
+										<center>
+											<h5>
+												<label for="ataSystemNumber">ATA System Number</label>
+											</h5>
+										</center>
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4">
+
+
+										<input placeholder="Search..." id="ataNo" type="text"
+											class="search" onchange="searchData('ataSystemNo')" />
+										<form action="#">
+											<select name="ataSystemNumber" class="sort_option sort_ataNo"
+												style="height: 150px;" id="ataSystemNo" multiple="multiple">
+											</select>
+										</form>
+									</div>
+									<div class="col-sm-1 midButton">
+										<input type="button" name="ATASelect" value="&gt;&gt;"
+											class="list-clear-btn" id="ataPush"
+											onclick="PushToSelectedList('ataSystemNo','ataValue');" /><br />
+										<br /> <input type="button" name="ATAClear" value="&lt;&lt;"
+											class="list-clear-btn" id="ataClear"
+											onclick="ClearSelectedList('ataValue','ataSystemNo');" />
+									</div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="ataNo1" type="text"
+											class="search" />
+										<form action="#">
+											<select name="ataSystemNumber"
+												class="sort_option sort_ataNo1" style="height: 150px;"
+												id="ataValue" multiple="multiple">
+
+											</select> <br />
+											<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+												value="Submit" class="list-clear-btn" id="ataSubmit"
+												onclick="getATASystemNo()" />
+										</form>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<br/>
+						<br/>
+						<div class="row ">
+							<div class="col-sm-6">
+
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-10">
+										<center>
+											<h5>
+												<label for="companyPartNumber">Company Part Number</label>
+											</h5>
+										</center>
+									</div>
+
+								</div>
+
+
+
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="cpnNo" type="text"
+											class="search" onchange="searchData('companyPartNo')"
+											readonly="readonly" />
+										<form action="#">
+											<select name="companyPartNumber"
+												class="sort_option sort_cpnNo" style="height: 150px;"
+												id="companyPartNo" multiple="multiple">
+
+											</select>
+										</form>
+									</div>
+									<div class="col-sm-1 midButton">
+										<input type="button" name="cpnSelect" value="&gt;&gt;"
+											class="list-clear-btn" id="companyPush"
+											onclick="PushToSelectedList('companyPartNo','companyValue');"
+											disabled="disabled" /><br />
+										<br /> <input type="button" name="cpnClear" value="&lt;&lt;"
+											class="list-clear-btn" id="companyClear"
+											onclick="ClearSelectedList('companyValue','companyPartNo');"
+											disabled="disabled" />
+									</div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="cpnNo1" type="text"
+											class="search" readonly="readonly" />
+										<form action="#">
+											<select name="companyPartNumber"
+												class="sort_option sort_cpnNo1" style="height: 150px;"
+												id="companyValue" multiple="multiple">
+											</select><br />
+											<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+												value="Submit" class="list-clear-btn"
+												onclick="getCompanyPartNo()" id="companySubmit"
+												disabled="disabled" />
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-10">
+										<center>
+											<h5>
+												<label for="mfgPartNumber">MFG Part Number</label>
+											</h5>
+										</center>
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="mfgNo" type="text"
+											class="search" onchange="searchData('mfgPartNo')" />
+										<form action="#">
+											<select name="mfgPartNumber" class="sort_option sort_mfgNo"
+												style="height: 150px;" id="mfgPartNo" multiple="multiple">
+
+											</select>
+										</form>
+									</div>
+									<div class="col-sm-1 midButton">
+										<input type="button" name="MPNSelect" value="&gt;&gt;"
+											class="list-clear-btn" id="mfgPush"
+											onclick="PushToSelectedList('mfgPartNo','mfgValue');" /><br/>
+										<br /> <input type="button" name="MPNClear" value="&lt;&lt;"
+											class="list-clear-btn" id="mfgClear"
+											onclick="ClearSelectedList('mfgValue','mfgPartNo');" />
+									</div>
+									<div class="col-sm-4">
+										<input placeholder="Search..." id="mfgNo1" type="text"
+											class="search" />
+										<form action="#">
+											<select name="mfgPartNumber" class="sort_option sort_mfgNo1"
+												style="height: 150px;" id="mfgValue" multiple="multiple">
+
+											</select> <br/>
+											<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+												value="Submit" class="list-clear-btn"
+												onclick="getMFGPartNo()" id="mfgSubmit" />
+										</form>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
 					</div>
-					
-				</div>
-				<div class="row">
-				<div class="col-sm-1">
-				</div>
-					<div class="col-sm-4">
-				 		<input placeholder="Search..." id="fleet" type="text" class="search" onchange="searchData('fleetNo')" readonly /> 
-				 		<form>
-							<select name="fleet" class="sort_option sort_fleet" style="height: 150px;" id="fleetNo"
-							multiple  >
-							</select>
-						</form>	
-					</div>
-					<div class="col-sm-1 midButton">
-							<input type="button" value=">>" class="list-clear-btn" id="fleetPush" onclick="PushToSelectedList('fleetNo','fleetValue');" disabled ><br><br>
-						    <input type="button" value="<<" class="list-clear-btn" id="fleetClear" onclick="ClearSelectedList('fleetValue','fleetNo');" disabled >
-						
-			        </div>
-					<div class="col-sm-4">
-							<input placeholder="Search..." id="fleet1" type="text" class="search" readonly />
-							<form>
-						    <select name="fleet" class="sort_option sort_fleet" style="height: 150px;" id="fleetValue" multiple>
-						   </select><br><br>
-						   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						   <input type="button" value="Submit" class="list-clear-btn" id="fleetNoSubmit" onclick="getFleets()" disabled >
-						   </form>
+					<br/><br/>
+					<div class="finalButton">
+						<button type="button" class="btn btn-primary style_btn"
+							style="border-radius: 15px; margin-left: 10px;"
+							id="displayReport"
+							onclick="window.open('test.html','_self'); getFilteredData()">
+							Display<br/> Historical Analysis
+						</button>
 					</div>
 				</div>
 
 			</div>
-			<div class="col-sm-6">	
-					
-			   
-				
-				
-							<div class="row">
-							<div class="col-sm-2">
-				</div>
-					<div class="col-sm-10">
-						 <center><h5><label for="subFleet">Sub-Fleet Number</label><h5></center>
+		</div>
+		<div id="LoadFilter" class="modal fade" data-backdrop="static"
+			role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="model-title" align="center" id="modelStyle">Saved
+							Filters</h4>
 					</div>
-					
-				</div>
-				
-				
-				<div class="row">
-     			<div class="col-sm-2">
-				</div>
-     			   <div class="col-sm-4">
-     			   <input placeholder="Search..." id="subFleet" type="text" class="search" onchange="searchData('subfleetNo')"/> 
-					<form action="#">
-						<select name="subFleet" class="sort_option sort_subFleet" style="height: 150px;" id="subfleetNo"
-							multiple>
-												</select> 
-	                  </form>
-	                  </div>
-	                    <div class="col-sm-1 midButton">
-	                       <input type="button" value=">>" class="list-clear-btn" id="subfleetPush" onclick="PushToSelectedList('subfleetNo','subfleetValue');"><br><br>
-						  <input type="button" value="<<" class="list-clear-btn" id="subfleetClear" onclick="ClearSelectedList('subfleetValue','subfleetNo');">
-	                  </div>
-	                  <div class="col-sm-4">
-	                  <input placeholder="Search..." id="subFleet1" type="text" class="search sort_option" /> 
-	                  <form action="#">
-						<select name="subFleet" class="sort_option sort_subFleet1" style="height: 150px;" id="subfleetValue"
-							multiple>
-						
-						</select><br><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Submit" class="list-clear-btn"  id="subfleetSubmit" onclick="getSubFleets()" >
-					</form>
-					</div>
-					</div>
-			
-			</div>
-    
-    
-      
+					<div class="modal-body">
+						<table class="table table-striped table-bordered"
+							id="filterListTable">
+						</table>
 
-     
-      </div>
-      <br><br>
-	  
-	  <div class="row">
-								<div class="col-sm-6">
-				
-				
-				
-				<div class="row">
-				<div class="col-sm-1">
-				</div>
-					<div class="col-sm-10">
-						 <center><h5><label for="tailNumber">Tail Number</label><h5></center>
 					</div>
-					
-				</div>
-				
-				
-				<div class="row">
-				<div class="col-sm-1">
-				</div>
-					 <div class="col-sm-4">
-					<input placeholder="Search..." id="tail" type="text" class="search" onchange="searchData('tailNo')" /> 
-					<form action="#">
-						<select name="cars" class="sort_option sort_tail" style="height: 150px;" id="tailNo"
-							multiple>
-							</select>
-				    </form>
-				    </div>
-				    
-				    <div class="col-sm-1 midButton">
-				    
-						<input type="button" name="tailnoSelect" value=">>" class="list-clear-btn" id="tailPush" onclick="PushToSelectedList('tailNo','tailValue');"><br><br>
-				        <input type="button" name="tailnoClear" value="<<" class="list-clear-btn" id="tailClear" onclick="ClearSelectedList('tailValue','tailNo');">
-						
-				    </div>
-				    <div class="col-sm-4">
-				    <input placeholder="Search..." id="tail1" type="text" class="search" /> 
-				   			 <form>
-							<select name="cars" class="sort_option sort_tail1" style="height: 150px;" id="tailValue"
-							multiple>	
-						</select> <br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" value="Submit" class="list-clear-btn" id="tailSubmit" onclick="getTailNo()">
-						</form>
-					</div>
-					</div>
-					</div>
-					
-					
-					
-									<div class="col-sm-6">
-					
-	
-				
-				
-				
-				<div class="row">
-				<div class="col-sm-2">
-				</div>
-					<div class="col-sm-10">
-						 <center><h5><label for="ataSystemNumber">ATA System Number</label><h5></center>
-					</div>
-					
-				</div>
-				
-				<div class="row">
-				<div class="col-sm-2">
-				</div>
-					<div class="col-sm-4">
-					
-					
-							<input placeholder="Search..." id="ataNo" type="text" class="search"  onchange="searchData('ataSystemNo')"/> 
-						<form action="#">
-							<select name="ataSystemNumber" class="sort_option sort_ataNo"
-								style="height: 150px;" id="ataSystemNo" multiple>	
-							</select> 
-						</form>
-						</div>
-						 <div class="col-sm-1 midButton">
-						    <input type="button" name="ATASelect" value=">>" class="list-clear-btn" id="ataPush" onclick="PushToSelectedList('ataSystemNo','ataValue');"><br><br>
-							<input type="button" name="ATAClear" value="<<" class="list-clear-btn" id="ataClear" onclick="ClearSelectedList('ataValue','ataSystemNo');">
-						</div>
-						<div class="col-sm-4">
-						<input placeholder="Search..." id="ataNo1" type="text" class="search" /> 
-						   <form action="#">
-							<select name="ataSystemNumber" class="sort_option sort_ataNo1"
-								style="height: 150px;" id="ataValue" multiple>
-								
-							</select>
-							<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="button" value="Submit" class="list-clear-btn" id="ataSubmit" onclick="getATASystemNo()">
-						</form>
-					</div>
-				</div>	
-					
-				</div>
-	  </div>
-	  <br><br>
-	 	<div class="row "  >
-					<div class="col-sm-6">
-			
-				<div class="row">
-				<div class="col-sm-1">
-				</div>
-					<div class="col-sm-10">
-						 <center><h5><label for="companyPartNumber">Company Part Number</label><h5></center>
-					</div>
-					
-				</div>
-				
-				
-				
-				<div class="row">
-				<div class="col-sm-1">
-				</div>
-					 <div class="col-sm-4">
-						<input placeholder="Search..." id="cpnNo" type="text" class="search" onchange="searchData('companyPartNo')" readonly /> 
-					<form action="#">
-						<select name="companyPartNumber" class="sort_option sort_cpnNo"
-							style="height: 150px;" id="companyPartNo" multiple>
-						
-						</select>
-					</form>
-					</div>
-					<div class="col-sm-1 midButton">
-					<input type="button" name="cpnSelect" value=">>" class="list-clear-btn" id="companyPush" onclick="PushToSelectedList('companyPartNo','companyValue');" disabled><br><br>
-				    <input type="button" name="cpnClear" value="<<" class="list-clear-btn" id="companyClear" onclick="ClearSelectedList('companyValue','companyPartNo');" disabled>
-					</div>
-					<div class="col-sm-4">
-					<input placeholder="Search..." id="cpnNo1" type="text" class="search" readonly/>
-					<form action="#">
-						<select name="companyPartNumber" class="sort_option sort_cpnNo1"
-							style="height: 150px;" id="companyValue" multiple>
-										</select><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-						<input type="button" value="Submit" class="list-clear-btn" onclick="getCompanyPartNo()" id="companySubmit" disabled>
-					</form>
-					</div>
-					</div>
-					</div>
-					
-					<div class="col-sm-6">
-			
-				<div class="row">
-				<div class="col-sm-2">
-				</div>
-					<div class="col-sm-10">
-						 <center><h5><label for="mfgPartNumber">MFG Part Number</label><h5></center>
-					</div>
-					
-				</div>
-				
-				<div class="row">
-				<div class="col-sm-2">
-				</div>
-					 <div class="col-sm-4">
-							<input placeholder="Search..." id="mfgNo" type="text" class="search" onchange="searchData('mfgPartNo')"/> 
-						<form action="#">
-							<select name="mfgPartNumber" class="sort_option sort_mfgNo"
-								style="height: 150px;" id="mfgPartNo" multiple>
-								
-							</select>
-						</form>
-						</div>
-						<div class="col-sm-1 midButton">
-						<input type="button" name=MPNSelect value=">>" class="list-clear-btn" id="mfgPush" onclick="PushToSelectedList('mfgPartNo','mfgValue');"><br><br>
-							 <input type="button"  name="MPNClear" value="<<" class="list-clear-btn" id="mfgClear" onclick="ClearSelectedList('mfgValue','mfgPartNo');">
-						</div>
-						<div class="col-sm-4">
-						<input placeholder="Search..." id="mfgNo1" type="text" class="search" />
-						<form action="#">
-							<select name="mfgPartNumber" class="sort_option sort_mfgNo1"
-								style="height: 150px;" id="mfgValue" multiple>
-								
-							</select> 
-							<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							 <input type="button" value="Submit" class="list-clear-btn" onclick="getMFGPartNo()" id="mfgSubmit">
-						</form>
-					</div>
-					</div>
-					
-			</div>
-						
-					</div>
-	</div>
-		<br><br>
-	<div class="finalButton">
-							<button type="button" class="btn btn-primary style_btn"
-								style="border-radius: 15px; margin-left: 10px;"
-								id="displayReport" onclick="window.open('test.html','_self'); getFilteredData()">Display<br>
-								Historical Analysis</button>
-				</div>
-	</div>
 
-	</div>
-	</div>
-<div id="LoadFilter" class="modal fade" data-backdrop="static" role="dialog">
-<div class="modal-dialog">
-	<div class="modal-content">
-		<div class="modal-header"> 
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-			<h4 class="model-title" align="center" id="modelStyle" >Saved Filters</h4>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							id="modelClose">Close</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="modal-body">
-		   <table class="table table-striped table-bordered" id="filterListTable">
-		   </table>
-			
+
+		<div id="msgModal" class="msgModal">
+			<!-- Modal content -->
+			<div class="msgModal-content1">
+				<span class="close" id="close">x</span>
+				<p id="msg"></p>
+				<p id="error"></p>
+
+			</div>
 		</div>
-		
-		<div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal" id="modelClose">Close</button>
-		</div>
-	</div>
-</div>
- </div>
- 
- <div id="msgModal" class="msgModal">
-  <!-- Modal content -->
-  <div class="msgModal-content1">
-    <span class="close" id="close">x</span>
-    <p id="msg"></p>
-    <p id="error"></p>
-    
-  </div>
-</div>
+		</div>s
 </body>
 </html>
