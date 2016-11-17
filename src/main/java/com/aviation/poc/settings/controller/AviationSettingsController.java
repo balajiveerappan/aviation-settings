@@ -39,7 +39,7 @@ public class AviationSettingsController {
 	
 	@RequestMapping(value = "/loadComponent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<ComponentVO> loadComponent(@RequestParam(required = false) @DateTimeFormat(pattern = SettingsConstants.DATEFORMATNEW) Date start,@RequestParam(required = false) @DateTimeFormat(pattern = SettingsConstants.DATEFORMATNEW) Date end) {
+	public List<ComponentVO> loadComponent(@RequestParam(required = false) String start,@RequestParam(required = false) String end) {
 		return componentApiClient.getComponentData(start, end);
 	}
 }
