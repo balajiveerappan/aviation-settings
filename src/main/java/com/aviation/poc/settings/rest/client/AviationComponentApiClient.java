@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aviation.poc.settings.vo.ComponentVO;
 
-@FeignClient(name="aviation-component-api", url="http://localhost:8082")
+@FeignClient("aviation-component-api")
 public interface AviationComponentApiClient {
 	
 	@RequestMapping(value = "/splashScreen", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

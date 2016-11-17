@@ -20,7 +20,7 @@ public class AviationSettingsServiceImpl implements AviationSettingsService {
 	
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public List<Filter> getFilters() {
-		return filterRepository.getFilters();
+		return filterRepository.findAll();
 	}
 
 	

@@ -1,0 +1,10 @@
+applications:
+- name: aviation-settings
+  memory: 1G
+  host: aviation-settings-service
+  path: target/aviation-settings-0.0.1-SNAPSHOT.jar
+  env:
+    spring.profiles.active: cloud
+  services:
+  - eureka
+  - mysql3
