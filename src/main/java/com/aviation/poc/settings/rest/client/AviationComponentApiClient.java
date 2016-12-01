@@ -18,5 +18,12 @@ public interface AviationComponentApiClient {
 	
 	@RequestMapping(value = "/loadComponent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<ComponentVO> getComponentData(@RequestParam("start") String startDate, @RequestParam("end") String endDate);
+	
+	
+	@RequestMapping(value = "/getSplashDate", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getSplashScreenDate();
+	
+	@RequestMapping(value="/navigationToRemoval", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Long> navigationToRemoval(@RequestParam("actualData") String actualData,@RequestParam("dataType") String dataType);
 
 }

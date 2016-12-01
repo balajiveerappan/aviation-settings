@@ -10,19 +10,11 @@ spring:
   profiles:
     active: cloud
   datasource:
-    url: jdbc:mysql://localhost:3306/aviation?useSSL=false&user=root&password=root
-eureka:
-  instance:
-    non-secure-port: 80
-    hostname: ${vcap.application.uris[0]}
-  
-  client:
-    service-url:
-      defaultZone: ${vcap.services.eureka.credentials.url}
+    url: jdbc:mysql://localhost:3306/ad_f33ba6ada231ff9?useSSL=false&user=root&password=root
 ---  
 spring:
   profiles:
     active: local
   datasource:
-    url: jdbc:mysql://localhost:3306/aviation?useSSL=false&user=root&password=root
+    url: jdbc:mysql://localhost:3306/ad_f33ba6ada231ff9?useSSL=false&user=root&password=root
     

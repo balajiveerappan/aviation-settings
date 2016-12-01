@@ -1,42 +1,31 @@
 
-
-var dateRange = function() {
-
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth() + 1; //January is 0!
-
-	var yyyy = today.getFullYear();
-	if (dd < 10) {
-		dd = '0' + dd
+var dtRange=[];
+ function dateRange(){
+ 		$.ajax({
+			url : "/getSplashDate",
+			
+			success : function(data){
+			var dateRange =data.split(',');
+			dtRange=dateRange;
+			var tempFrom=dateRange[0].split("-");
+			fromDate=tempFrom[2]+"/"+tempFrom[1]+"/"+tempFrom[0];
+			var tempTo=dateRange[1].split("-");
+			toDate=tempTo[2]+"/"+tempTo[1]+"/"+tempTo[0];
+			document.getElementById("dateRange").value = fromDate+" - "+toDate;
+			document.getElementById("fromDate").value = toDate;
+			},
+			
+			error : function(data){
+			
+			}
+			
+		}); 
+			
+			
+	
+ 
 	}
-	if (mm < 10) {
-		mm = '0' + mm
-	}
-	var fromDate = dd + '/' + mm + '/' + yyyy;
-	document.getElementById("fromDate").value = fromDate;
-
-	var today = new Date();
-	today.setDate(today.getDate() - 30);
-
-	var dd = today.getDate();
-	var mm = today.getMonth() + 1; //January is 0!
-
-	var yyyy = today.getFullYear();
-	if (dd < 10) {
-		dd = '0' + dd
-	}
-	if (mm < 10) {
-		mm = '0' + mm
-	}
-	var today = dd + '/' + mm + '/' + yyyy;
-
-	//document.getElementById("dateRange").value = fromDate+" - "+today;
-
-	document.getElementById("dateRange").value = "10/08/2014 - 10/08/2016";
-
-}
-
+ 
 
 var drawVisualization=  function() {
 	var removalATAData = []
@@ -86,8 +75,16 @@ var drawVisualization=  function() {
 			var chart = new google.visualization.ComboChart(document
 					.getElementById('piechart_div'));
 			chart.draw(datam, optionsm);
-			google.visualization.events.addListener(chart, 'select',
-					selectHandler);
+			google.visualization.events.addListener(chart, 'select', function(){
+				var selection = chart.getSelection();
+				if (selection.length) {
+
+					var xAxisValue=datam.getValue(selection[0].row,0);
+					var dType="ATA";
+					navigation(xAxisValue,dType);
+					//window.open('test.html', '_self');
+				}
+			});
 
 		}
 
@@ -100,7 +97,7 @@ var drawVisualization2 =  function() {
 	var removalCPNSerialData = []
 	$.ajax({
 		url : "/splashScreen",
-		data:{componentType: "CPN"},
+		data:{componentType: "CSN"},
 		success : function(data) {
 
 			removalCPNSerialData = data;
@@ -147,8 +144,16 @@ var drawVisualization2 =  function() {
 			var chart = new google.visualization.ComboChart(document
 					.getElementById('barchart_div'));
 			chart.draw(datam, optionsm);
-			google.visualization.events.addListener(chart, 'select',
-					selectHandler);
+			google.visualization.events.addListener(chart, 'select', function(){
+				var selection = chart.getSelection();
+				if (selection.length) {
+					var xAxisValue=datam.getValue(selection[0].row,0);
+					var dType="CSN";
+					navigation(xAxisValue,dType);
+					
+					//window.open('test.html', '_self');
+				}
+			});
 
 		}
 
@@ -203,8 +208,16 @@ var drawStacked = function() {
 			var chart = new google.visualization.ComboChart(document
 					.getElementById('piechart_divp'));
 			chart.draw(datam, optionsm);
-			google.visualization.events.addListener(chart, 'select',
-					selectHandler);
+			google.visualization.events.addListener(chart, 'select', function(){
+				var selection = chart.getSelection();
+				if (selection.length) {
+					var xAxisValue=datam.getValue(selection[0].row,0);
+					var dType="Tail";
+					navigation(xAxisValue,dType);
+					
+					//window.open('test.html', '_self');
+				}
+			});
 		}
 	});
 }
@@ -214,7 +227,7 @@ var drawVisualizations =  function() {
 	var removalCPNData = []
 	$.ajax({
 		url : "/splashScreen",
-		data:{componentType: "MFG"},
+		data:{componentType: "CPN"},
 		success : function(data) {
 			removalCPNData = data;
 			var datam = new google.visualization.DataTable();
@@ -223,7 +236,7 @@ var drawVisualizations =  function() {
 			datam.addRows(removalCPNData)
 
 			var optionsm = {
-				title : 'Top 10 worst performing MPNs',
+				title : 'Top 10 worst performing CPNs',
 				vAxis : {
 					title : 'Number of removals',
 					format : '#',
@@ -232,7 +245,7 @@ var drawVisualizations =  function() {
 					}
 				},
 				hAxis : {
-					title : 'MFG.Part Number',
+					title : 'Company Part Number',
 					titleTextStyle : {
 						bold : true
 
@@ -258,14 +271,106 @@ var drawVisualizations =  function() {
 			var chart = new google.visualization.ComboChart(document
 					.getElementById('barchart_div2'));
 			chart.draw(datam, optionsm);
-			google.visualization.events.addListener(chart, 'select',
-					selectHandler);
+			google.visualization.events.addListener(chart, 'select', function(){
+				var selection = chart.getSelection();
+				if (selection.length) {
+					var xAxisValue=datam.getValue(selection[0].row,0);
+					var dType="CPN";
+					navigation(xAxisValue,dType);
+					
+				}
+			});
 
 		}
 	});
 
 }
 
-var selectHandler = function() {
+/*var selectHandler = function() {
+	
+	
+	
 	window.open('test.html', '_self');
+}*/
+
+
+
+
+
+
+
+
+
+/*
+* navigation from splash to removal graph
+*/
+
+/*
+open = function(verb, url, data, target) {
+	  var form = document.createElement("form");
+	  form.action = url;
+	  form.method = verb;
+	  form.target = target || "_self";
+	  if (data) {
+	    for (var key in data) {
+	      var input = document.createElement("textarea");
+	      input.name = key;
+	      input.value = typeof data[key] === "object" ? JSON.stringify(data[key]) : data[key];
+	      form.appendChild(input);
+	    }
+	  }
+	  form.style.display = 'none';
+	  document.body.appendChild(form);
+	  form.submit();
+	};*/
+function navigation(actualData,dataType){
+
+//var fmDate=document.getElementById().value
+		
+				var mapForm = document.createElement("form");
+				mapForm.target = "Map";
+				mapForm.method = "get"; // or "post" if appropriate
+				mapForm.action = "/aviation-component-ui/splashTest";
+				
+				var actualDataInput = document.createElement("input");
+				actualDataInput.type = "text";
+				actualDataInput.name = "actualData";
+				actualDataInput.value = actualData;
+				 	
+				var dataTypeInput1 = document.createElement("input");
+				dataTypeInput1.type = "text";
+				dataTypeInput1.name = "dataType";
+				dataTypeInput1.value = dataType;
+				
+			 	
+				var dataTypeInput2 = document.createElement("input");
+				dataTypeInput2.type = "text";
+				dataTypeInput2.name = "fromDate";
+				dataTypeInput2.value = dtRange[0];
+				
+				var dataTypeInput3 = document.createElement("input");
+				dataTypeInput3.type = "text";
+				dataTypeInput3.name = "toDate";
+				dataTypeInput3.value = dtRange[1];
+				
+				
+				var dataTypeInput4 = document.createElement("input");
+				dataTypeInput4.type = "text";
+				dataTypeInput4.name = "pageType";
+				dataTypeInput4.value = "splash";
+				
+				
+				mapForm.appendChild(actualDataInput);
+				mapForm.appendChild(dataTypeInput1);
+				mapForm.appendChild(dataTypeInput2);
+				mapForm.appendChild(dataTypeInput3);
+				mapForm.appendChild(dataTypeInput4);
+				
+				document.body.appendChild(mapForm);
+				
+				map = window.open('Map', '_self');
+				mapForm.submit(); 
+
 }
+
+
