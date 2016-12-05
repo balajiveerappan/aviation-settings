@@ -1,23 +1,21 @@
 server:
-  port: 8087
-spring:
-  jpa:
-    properties:
-      hibernate.dialect:
-        org.hibernate.dialect.MySQL5Dialect
+  port: 8082
+  max-http-header-size: 2012333
+---
+server:
+  context-path: /
 ---
 spring:
-  profiles:
-    active: cloud
-  datasource:
-    url: jdbc:mysql://localhost:3306/ad_f33ba6ada231ff9?useSSL=false&user=root&password=root
----  
+  profiles: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+---
 spring:
-  profiles:
-    active: local
+  profiles: local, cloud
   datasource:
-    url: jdbc:mysql://localhost:3306/ad_f33ba6ada231ff9?useSSL=false&user=root&password=root
-   
+    url: ${cloud.services.mysql3.connection.jdbcUrl:jdbc:mysql://localhost:3306/aviation?useSSL=false&user=root&password=root}
+---
 eureka:
   instance:
     non-secure-port: 80
