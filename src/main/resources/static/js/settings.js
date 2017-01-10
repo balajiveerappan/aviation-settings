@@ -351,7 +351,7 @@ function navigation(actualData,dataType){
 				var dataTypeInput3 = document.createElement("input");
 				dataTypeInput3.type = "text";
 				dataTypeInput3.name = "toDate";
-				dataTypeInput3.value = dtRange[1];
+				dataTypeInput3.value = dtRange[1].trim();
 				
 				
 				var dataTypeInput4 = document.createElement("input");

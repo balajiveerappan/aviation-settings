@@ -1125,6 +1125,7 @@ function getFilteredData()
 	
 	var fromDate=document.getElementById("fromDate").value;       
 	var toDate=document.getElementById("toDate").value;
+	console.log("todate first"+toDate);
 	var  filterName = $('#filterName').val();
   componentIds=[];
   
@@ -1138,7 +1139,8 @@ function getFilteredData()
 
 	var fmDate=document.getElementById("fromDate").value;       
 	var toDate=document.getElementById("toDate").value;
-
+	
+	console.log("todate second"+toDate);
    var mapForm = document.createElement("form");
    mapForm.target = "Map";
    mapForm.method = "get"; // or "post" if appropriate
@@ -1271,7 +1273,7 @@ function getFilterValue(){
    			          "filterBy":{ "newUnit":newUnit, "removedUnit":removedUnit, "installedUnit":installedUnit/*, "problemUnit" :problemUnit , 
 "overhauledUnit":overhauledUnit*/},
    	                 "selectedFleets":fleets,"selectedSubfleets":subfleets,"selectedTails":tails,"selectedATAs":atas,"selectedCPNs":cpns,"selectedMFGs":mfgs};
-   	 
+   	
 	 return  JSON.stringify(filterJson)
 }
 
@@ -1283,6 +1285,7 @@ function getFilterValue(){
  * Date:18-10-2016
  */
  function saveFilter(){
+	
 		var info=''
      	var  filterName = $('#filterName').val();   	
 	if(isValidSaveForm())
@@ -1290,7 +1293,7 @@ function getFilterValue(){
 			
 			  if(isExistFilter(filterName))
 			{  var  fromDat = $('#tailValue').val();
-										
+					
 				updateFilter(getFilterValue());	
 			}
 			  
@@ -1556,7 +1559,7 @@ function getFilterValue(){
 
  function updateFilter(filter)
  {
-	 	
+
 	 	$.ajax({
 	 			 type : "POST",
 	 			 contentType : "application/json",
@@ -1595,6 +1598,7 @@ function getFilterValue(){
 	 		{
 	 			checkedStatus=[]
 	 			document.getElementById("filterName").value=filterName
+	 			document.getElementById("filterID").value=filters[i].filterID
 	 			document.getElementById("fromDate").value=filters[i].fromDate;
 	 			document.getElementById("toDate").value=filters[i].toDate;
 	 			

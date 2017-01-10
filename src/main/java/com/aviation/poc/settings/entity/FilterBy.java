@@ -17,7 +17,7 @@ public class FilterBy implements Serializable {
 	private static final long serialVersionUID = 8962186185912836733L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long filterID;
 
 	@Type(type = "org.hibernate.type.NumericBooleanType")

@@ -1,5 +1,8 @@
 package com.aviation.poc.settings.controller;
 
+
+
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,7 +70,17 @@ public class AviationSettingsController {
 				 
 		
 	}
+	@RequestMapping(value = "/saveFilter", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void saveFilter(@RequestBody final Filter filter) throws ParseException {
+		System.out.println("in save filter"+filter);
+		aviationSettingsService.saveFilter(filter);
+	}
 	
+	@RequestMapping(value = "/updateFilter", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void updateFilter(@RequestBody final Filter filter) throws ParseException {
+		System.out.println("in update filter"+filter);
+		aviationSettingsService.updateFilter(filter);
+	}
 	
 	/*@RequestMapping(value="/navigationToRemoval/{actualData}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String navigationToRemoval(@RequestParam String actualData){	//

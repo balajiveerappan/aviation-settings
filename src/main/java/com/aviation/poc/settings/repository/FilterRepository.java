@@ -37,5 +37,16 @@ public interface FilterRepository extends JpaRepository<Filter, Serializable> {
 	@Query("UPDATE FilterBy fb SET fb.installedUnit=?1, fb.newUnit=?2, fb.removedUnit=?3 WHERE fb.filterID=?4")
 	public int updateFilterBy(boolean isInstalled,boolean isNew,boolean isRemoved , long filterID);
 	
+	
+	@Modifying
+	@Transactional
+	@Query("UPDATE Filter fb SET fb.defaultFilter=0 WHERE fb.filterID=?1")
+	public int updateDefaultFilter(long defaultFilterId);
 
+	
+	
+	@Modifying
+	@Transactional
+	@Query("UPDATE Filter fb SET fb.defaultFilter=1 WHERE fb.filterID=?1")
+	public int updateDefaultFilterToOne(long defaultFilterId);
 }
